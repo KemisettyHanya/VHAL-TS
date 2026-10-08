@@ -1,0 +1,20 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Production & Build outputs
+dist/
+dist-test/
+
+# Logs & temp
+*.log
+server.sock
+
+# Environment & Editor
+.env
+.env.local
+.vscode/*
+!.vscode/settings.json
+.idea
+.DS_Store

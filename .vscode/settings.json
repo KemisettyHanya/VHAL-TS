@@ -1,0 +1,9 @@
+{
+  "antigravity.security.permissions": {
+    "runTerminalCommands": "always",
+    "modifyFiles": "always",
+    "createFiles": "always",
+    "deleteFiles": "always",
+    "browserActions": "always"
+  }
+}
