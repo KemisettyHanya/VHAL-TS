@@ -10,17 +10,21 @@ import { CodeGenDrawer } from './components/modals/CodeGenDrawer';
 import { ImportExportModal } from './components/modals/ImportExportModal';
 
 export const App: React.FC = () => {
-  const { messages, loadSamplePowertrainDbc } = useVhalStore();
+  const { messages, loadSamplePowertrainDbc, theme, setTheme } = useVhalStore();
 
   useEffect(() => {
+    // Sync initial theme
+    const savedTheme = (localStorage.getItem('vhal_theme') as 'light' | 'dark') || 'light';
+    setTheme(savedTheme);
+
     // If empty on first load, initialize with sample DBC & mappings
     if (messages.length === 0) {
       loadSamplePowertrainDbc();
     }
-  }, [messages.length, loadSamplePowertrainDbc]);
+  }, [messages.length, loadSamplePowertrainDbc, setTheme]);
 
   return (
-    <div className="flex flex-col h-screen w-screen overflow-hidden bg-slate-950 text-slate-100 antialiased font-sans">
+    <div className="flex flex-col h-screen w-screen overflow-hidden bg-slate-100 dark:bg-slate-950 text-slate-800 dark:text-slate-100 antialiased font-sans">
       {/* Top Header */}
       <Header />
 

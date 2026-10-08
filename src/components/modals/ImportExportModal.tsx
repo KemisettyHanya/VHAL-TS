@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useVhalStore } from '../../store/vhalStore';
 import { SAMPLE_POWERTRAIN_DBC } from '../../parsers/dbcParser';
-import { X, Upload, Download, FileText, Database, Sparkles, Check } from 'lucide-react';
+import { X, Upload, Download, Database, Sparkles, Check } from 'lucide-react';
 
 type TabType = 'dbc' | 'json_matrix' | 'workspace_export' | 'workspace_import';
 
@@ -101,19 +101,19 @@ export const ImportExportModal: React.FC = () => {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm">
-      <div className="w-full max-w-2xl bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-150">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 dark:bg-black/75 backdrop-blur-sm">
+      <div className="w-full max-w-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-150 transition-colors">
         {/* Header */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-slate-800 bg-slate-950/80">
+        <div className="flex items-center justify-between px-6 py-4 border-b border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/80">
           <div className="flex items-center gap-2.5">
-            <div className="p-2 rounded-xl bg-cyan-950 text-cyan-400 border border-cyan-800/50">
+            <div className="p-2 rounded-xl bg-cyan-100 dark:bg-cyan-950 text-cyan-700 dark:text-cyan-400 border border-cyan-200 dark:border-cyan-800/50">
               <Database className="w-4 h-4" />
             </div>
             <div>
-              <h3 className="text-base font-bold text-slate-100">
+              <h3 className="text-base font-bold text-slate-900 dark:text-slate-100">
                 Vehicle Signal & Workspace Management
               </h3>
-              <p className="text-xs text-slate-400">
+              <p className="text-xs text-slate-500 dark:text-slate-400">
                 Vector DBC, JSON matrices, and session state persistence
               </p>
             </div>
@@ -121,20 +121,20 @@ export const ImportExportModal: React.FC = () => {
 
           <button
             onClick={() => setImportModalOpen(false)}
-            className="p-1.5 text-slate-400 hover:text-slate-200 rounded-lg hover:bg-slate-800 transition-colors"
+            className="p-1.5 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
           >
             <X className="w-4 h-4" />
           </button>
         </div>
 
         {/* Tab Strip */}
-        <div className="flex border-b border-slate-800 bg-slate-950/40 px-6 text-xs font-medium">
+        <div className="flex border-b border-slate-200 dark:border-slate-800 bg-slate-100/60 dark:bg-slate-950/40 px-6 text-xs font-medium">
           <button
             onClick={() => setActiveTab('dbc')}
             className={`py-3 px-3 border-b-2 transition-colors ${
               activeTab === 'dbc'
-                ? 'border-cyan-500 text-cyan-400 font-semibold'
-                : 'border-transparent text-slate-400 hover:text-slate-200'
+                ? 'border-cyan-600 dark:border-cyan-500 text-cyan-700 dark:text-cyan-400 font-semibold'
+                : 'border-transparent text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200'
             }`}
           >
             Import Vector DBC
@@ -143,8 +143,8 @@ export const ImportExportModal: React.FC = () => {
             onClick={() => setActiveTab('json_matrix')}
             className={`py-3 px-3 border-b-2 transition-colors ${
               activeTab === 'json_matrix'
-                ? 'border-cyan-500 text-cyan-400 font-semibold'
-                : 'border-transparent text-slate-400 hover:text-slate-200'
+                ? 'border-cyan-600 dark:border-cyan-500 text-cyan-700 dark:text-cyan-400 font-semibold'
+                : 'border-transparent text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200'
             }`}
           >
             Import JSON Matrix
@@ -156,8 +156,8 @@ export const ImportExportModal: React.FC = () => {
             }}
             className={`py-3 px-3 border-b-2 transition-colors ${
               activeTab === 'workspace_export'
-                ? 'border-cyan-500 text-cyan-400 font-semibold'
-                : 'border-transparent text-slate-400 hover:text-slate-200'
+                ? 'border-cyan-600 dark:border-cyan-500 text-cyan-700 dark:text-cyan-400 font-semibold'
+                : 'border-transparent text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200'
             }`}
           >
             Export Workspace
@@ -166,8 +166,8 @@ export const ImportExportModal: React.FC = () => {
             onClick={() => setActiveTab('workspace_import')}
             className={`py-3 px-3 border-b-2 transition-colors ${
               activeTab === 'workspace_import'
-                ? 'border-cyan-500 text-cyan-400 font-semibold'
-                : 'border-transparent text-slate-400 hover:text-slate-200'
+                ? 'border-cyan-600 dark:border-cyan-500 text-cyan-700 dark:text-cyan-400 font-semibold'
+                : 'border-transparent text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200'
             }`}
           >
             Import Workspace
@@ -179,7 +179,7 @@ export const ImportExportModal: React.FC = () => {
           {activeTab === 'dbc' && (
             <div className="space-y-4">
               <div className="flex items-center justify-between">
-                <span className="text-slate-300 font-semibold">
+                <span className="text-slate-700 dark:text-slate-300 font-semibold">
                   Vector DBC Format Definition
                 </span>
                 <div className="flex items-center gap-2">
@@ -187,12 +187,12 @@ export const ImportExportModal: React.FC = () => {
                     onClick={() => {
                       setDbcText(SAMPLE_POWERTRAIN_DBC);
                     }}
-                    className="flex items-center gap-1 px-2.5 py-1 text-xs rounded bg-cyan-950/60 hover:bg-cyan-900/60 text-cyan-400 border border-cyan-800/50"
+                    className="flex items-center gap-1 px-2.5 py-1 text-xs rounded bg-cyan-50 hover:bg-cyan-100 dark:bg-cyan-950/60 dark:hover:bg-cyan-900/60 text-cyan-700 dark:text-cyan-400 border border-cyan-200 dark:border-cyan-800/50 transition-colors font-medium"
                   >
                     <Sparkles className="w-3 h-3" />
                     Load Sample DBC
                   </button>
-                  <label className="flex items-center gap-1 px-2.5 py-1 text-xs rounded bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 cursor-pointer">
+                  <label className="flex items-center gap-1 px-2.5 py-1 text-xs rounded bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-700 cursor-pointer shadow-sm transition-colors">
                     <Upload className="w-3 h-3" />
                     Browse .dbc
                     <input
@@ -210,7 +210,7 @@ export const ImportExportModal: React.FC = () => {
                 onChange={(e) => setDbcText(e.target.value)}
                 placeholder="Paste Vector DBC file contents here (BO_ and SG_ lines)..."
                 rows={9}
-                className="w-full p-3 bg-slate-950 border border-slate-800 rounded-xl font-mono text-xs text-slate-200 placeholder:text-slate-600 focus:outline-none focus:border-cyan-500"
+                className="w-full p-3 bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-800 rounded-xl font-mono text-xs text-slate-800 dark:text-slate-200 placeholder:text-slate-400 dark:placeholder:text-slate-600 focus:outline-none focus:border-cyan-500"
               />
 
               <div className="flex justify-end gap-2">
@@ -228,10 +228,10 @@ export const ImportExportModal: React.FC = () => {
           {activeTab === 'json_matrix' && (
             <div className="space-y-4">
               <div className="flex items-center justify-between">
-                <span className="text-slate-300 font-semibold">
+                <span className="text-slate-700 dark:text-slate-300 font-semibold">
                   Structured Vehicle Signal Matrix (JSON)
                 </span>
-                <label className="flex items-center gap-1 px-2.5 py-1 text-xs rounded bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 cursor-pointer">
+                <label className="flex items-center gap-1 px-2.5 py-1 text-xs rounded bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-700 cursor-pointer shadow-sm transition-colors">
                   <Upload className="w-3 h-3" />
                   Browse .json
                   <input
@@ -248,7 +248,7 @@ export const ImportExportModal: React.FC = () => {
                 onChange={(e) => setJsonMatrixText(e.target.value)}
                 placeholder="Paste JSON signal matrix: [{ id: '0x1A4', name: 'SpeedFrame', signals: [...] }]"
                 rows={9}
-                className="w-full p-3 bg-slate-950 border border-slate-800 rounded-xl font-mono text-xs text-slate-200 placeholder:text-slate-600 focus:outline-none focus:border-cyan-500"
+                className="w-full p-3 bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-800 rounded-xl font-mono text-xs text-slate-800 dark:text-slate-200 placeholder:text-slate-400 dark:placeholder:text-slate-600 focus:outline-none focus:border-cyan-500"
               />
 
               <div className="flex justify-end gap-2">
@@ -266,8 +266,8 @@ export const ImportExportModal: React.FC = () => {
           {activeTab === 'workspace_export' && (
             <div className="space-y-4">
               <div className="flex items-center justify-between">
-                <span className="text-slate-300 font-semibold">
-                  Export Workspace (<span className="text-cyan-400 font-mono">vhal_mapping_workspace.json</span>)
+                <span className="text-slate-700 dark:text-slate-300 font-semibold">
+                  Export Workspace (<span className="text-cyan-600 dark:text-cyan-400 font-mono">vhal_mapping_workspace.json</span>)
                 </span>
                 <div className="flex items-center gap-2">
                   <button
@@ -276,14 +276,14 @@ export const ImportExportModal: React.FC = () => {
                       setCopied(true);
                       setTimeout(() => setCopied(false), 2000);
                     }}
-                    className="px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 font-mono flex items-center gap-1"
+                    className="px-2.5 py-1 rounded bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-700 font-mono flex items-center gap-1 shadow-sm transition-colors"
                   >
-                    {copied ? <Check className="w-3 h-3 text-emerald-400" /> : null}
+                    {copied ? <Check className="w-3 h-3 text-emerald-600 dark:text-emerald-400" /> : null}
                     {copied ? 'Copied' : 'Copy'}
                   </button>
                   <button
                     onClick={handleDownloadWorkspace}
-                    className="flex items-center gap-1 px-3 py-1.5 rounded-lg bg-cyan-600 hover:bg-cyan-500 text-white font-semibold shadow-md"
+                    className="flex items-center gap-1 px-3 py-1.5 rounded-lg bg-cyan-600 hover:bg-cyan-500 text-white font-semibold shadow-md transition-colors"
                   >
                     <Download className="w-3.5 h-3.5" />
                     Download JSON
@@ -295,7 +295,7 @@ export const ImportExportModal: React.FC = () => {
                 value={exportedJson}
                 readOnly
                 rows={9}
-                className="w-full p-3 bg-slate-950 border border-slate-800 rounded-xl font-mono text-[11px] text-slate-300 focus:outline-none"
+                className="w-full p-3 bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-800 rounded-xl font-mono text-[11px] text-slate-700 dark:text-slate-300 focus:outline-none"
               />
             </div>
           )}
@@ -303,10 +303,10 @@ export const ImportExportModal: React.FC = () => {
           {activeTab === 'workspace_import' && (
             <div className="space-y-4">
               <div className="flex items-center justify-between">
-                <span className="text-slate-300 font-semibold">
+                <span className="text-slate-700 dark:text-slate-300 font-semibold">
                   Restore Saved Workspace Session
                 </span>
-                <label className="flex items-center gap-1 px-2.5 py-1 text-xs rounded bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 cursor-pointer">
+                <label className="flex items-center gap-1 px-2.5 py-1 text-xs rounded bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-700 cursor-pointer shadow-sm transition-colors">
                   <Upload className="w-3 h-3" />
                   Browse Workspace File
                   <input
@@ -323,7 +323,7 @@ export const ImportExportModal: React.FC = () => {
                 onChange={(e) => setImportWorkspaceText(e.target.value)}
                 placeholder="Paste vhal_mapping_workspace.json file contents here..."
                 rows={9}
-                className="w-full p-3 bg-slate-950 border border-slate-800 rounded-xl font-mono text-xs text-slate-200 placeholder:text-slate-600 focus:outline-none focus:border-cyan-500"
+                className="w-full p-3 bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-800 rounded-xl font-mono text-xs text-slate-800 dark:text-slate-200 placeholder:text-slate-400 dark:placeholder:text-slate-600 focus:outline-none focus:border-cyan-500"
               />
 
               <div className="flex justify-end gap-2">
@@ -342,4 +342,3 @@ export const ImportExportModal: React.FC = () => {
     </div>
   );
 };
-

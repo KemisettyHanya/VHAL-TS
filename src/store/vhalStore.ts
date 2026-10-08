@@ -36,6 +36,10 @@ interface VhalState {
   // Interactive Connection Drag State
   connectingSourcePin: { signalId: string; x: number; y: number } | null;
   mousePos: { x: number; y: number };
+  // Theme State
+  theme: 'light' | 'dark';
+  setTheme: (theme: 'light' | 'dark') => void;
+  toggleTheme: () => void;
 
   // Actions
   setSearchCan: (query: string) => void;
@@ -101,6 +105,24 @@ export const useVhalStore = create<VhalState>((set, get) => ({
 
   connectingSourcePin: null,
   mousePos: { x: 0, y: 0 },
+  theme: (typeof window !== 'undefined' && (localStorage.getItem('vhal_theme') as any)) || 'light',
+  setTheme: (theme) => {
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('vhal_theme', theme);
+      if (theme === 'dark') {
+        document.documentElement.classList.add('dark');
+        document.documentElement.classList.remove('light');
+      } else {
+        document.documentElement.classList.remove('dark');
+        document.documentElement.classList.add('light');
+      }
+    }
+    set({ theme });
+  },
+  toggleTheme: () => {
+    const next = get().theme === 'dark' ? 'light' : 'dark';
+    get().setTheme(next);
+  },
 
   setSearchCan: (query) => set({ searchCan: query }),
   setSearchVhal: (query) => set({ searchVhal: query }),

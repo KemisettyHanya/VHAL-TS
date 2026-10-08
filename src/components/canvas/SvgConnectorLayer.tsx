@@ -158,15 +158,15 @@ export const SvgConnectorLayer: React.FC<SvgConnectorLayerProps> = ({
                 }}
                 className={`flex items-center justify-between gap-1 px-2 py-0.5 rounded-full text-[10px] font-mono shadow-md backdrop-blur-sm border transition-transform duration-150 hover:scale-105 cursor-pointer ${
                   isSelected
-                    ? 'bg-slate-900 border-cyan-400 text-cyan-300 shadow-cyan-900/50'
-                    : 'bg-slate-950/90 border-slate-700/80 text-slate-300 hover:border-slate-500'
+                    ? 'bg-white border-cyan-500 text-cyan-700 shadow-cyan-100 dark:bg-slate-900 dark:border-cyan-400 dark:text-cyan-300 dark:shadow-cyan-900/50'
+                    : 'bg-white/95 border-slate-200 text-slate-700 hover:border-slate-400 dark:bg-slate-950/90 dark:border-slate-700/80 dark:text-slate-300 dark:hover:border-slate-500'
                 }`}
               >
                 <div
                   className="flex items-center gap-1 min-w-0 truncate"
                   title={conn.transform.customExpression || `scale: ${conn.signal.scale}`}
                 >
-                  <Zap className={`w-2.5 h-2.5 shrink-0 ${hasCustomMath ? 'text-amber-400' : 'text-cyan-400'}`} />
+                  <Zap className={`w-2.5 h-2.5 shrink-0 ${hasCustomMath ? 'text-amber-500 dark:text-amber-400' : 'text-cyan-600 dark:text-cyan-400'}`} />
                   <span className="truncate">
                     {hasCustomMath ? 'f(x)' : `${conn.signal.scale !== 1 ? `×${conn.signal.scale}` : '1:1'}`}
                   </span>
@@ -179,7 +179,7 @@ export const SvgConnectorLayer: React.FC<SvgConnectorLayerProps> = ({
                       onEditConnection(conn);
                     }}
                     title="Edit arithmetic transformation formula"
-                    className="p-0.5 text-slate-400 hover:text-cyan-300 hover:bg-slate-800 rounded transition-colors"
+                    className="p-0.5 text-slate-400 hover:text-cyan-600 hover:bg-slate-100 dark:hover:text-cyan-300 dark:hover:bg-slate-800 rounded transition-colors"
                   >
                     <Settings className="w-2.5 h-2.5" />
                   </button>
@@ -189,7 +189,7 @@ export const SvgConnectorLayer: React.FC<SvgConnectorLayerProps> = ({
                       onDeleteConnection(conn.id);
                     }}
                     title="Delete connection"
-                    className="p-0.5 text-slate-400 hover:text-rose-400 hover:bg-slate-800 rounded transition-colors"
+                    className="p-0.5 text-slate-400 hover:text-rose-600 hover:bg-slate-100 dark:hover:text-rose-400 dark:hover:bg-slate-800 rounded transition-colors"
                   >
                     <Trash2 className="w-2.5 h-2.5" />
                   </button>
