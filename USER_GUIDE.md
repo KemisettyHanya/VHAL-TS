@@ -20,7 +20,7 @@ npm run dev
 ```
 Open your browser and navigate to:
 ```
-http://localhost:3000/
+http://localhost:5174/
 ```
 
 #### Option B: Production Build & High-Speed Preview
@@ -180,7 +180,7 @@ npm run build
 npm run preview
 ```
 
-Open your browser at `http://localhost:3000` (Edge, Chrome, Firefox, Brave, or Safari).
+Open your browser at `http://localhost:5174` (Edge, Chrome, Firefox, Brave, or Safari).
 
 ---
 

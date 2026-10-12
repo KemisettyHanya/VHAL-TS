@@ -40,7 +40,7 @@ const server = http.createServer((req, res) => {
   });
 });
 
-const PORT = 3000;
+const PORT = 5174;
 server.listen(PORT, '127.0.0.1', () => {
   console.log(`Server running at http://127.0.0.1:${PORT}/`);
 });

@@ -124,7 +124,7 @@ npm run dev
 
 Navigate to:
 ```
-http://localhost:3000/
+http://localhost:5174/
 ```
 
 ### Production Build & Preview
